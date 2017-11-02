@@ -8,6 +8,12 @@ var handler = function (req, res, next) {
         sub_title: '热门排行',
         album_url: 'https://android-artworks.25pp.com/fs08/2017/10/12/11/110_67909199d7f066a11c8c11fbe0be1f85_con.png',
         code: 'qiubai'
+    }, {
+        name: '知乎日报',
+        description: '每天 3 次，每次 7 分钟',
+        sub_title: '热门精选',
+        album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-3/93102250.jpg',
+        code: 'zhihu'
     }];
     var result = {
         data: list,

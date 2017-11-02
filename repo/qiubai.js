@@ -14,7 +14,8 @@ var parseToCommonFormat = function(data) {
             var content = {
                 id: result.source + '_' + item.data.id,
                 title: item.data.title,
-                content: item.data.content,
+                display_content: item.data.content,
+                read_content: item.data.content,
                 type: 'word',
                 create_at: item.data.created_at
             };
