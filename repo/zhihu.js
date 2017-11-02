@@ -18,7 +18,7 @@ var parseToCommonFormat = function(data) {
         var content = {
             id: result.source + '_' + item.id,
             title: item.title,
-            display_content: item.body,
+            display_content: item.share_url,
             read_content: parseHtml(item.body),
             type: 'multi',
             image: item.image,
