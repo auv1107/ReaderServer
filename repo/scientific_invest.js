@@ -1,8 +1,11 @@
 'use strict';
 var request = require('request');
-const parse5 = require('parse5');
 
-const URL = "https://news-at.zhihu.com/api/3/news/hot";
+const URL = "https://zhuanlan.zhihu.com/api/columns/scientific-invest/posts";
+const URL_ZHUANLAN_PREFIX = "https://zhuanlan.zhihu.com";
+const PARAM_LIMIT = "limit";
+const PARAM_OFFSET = "offset";
+const PAGE_SIZE = 15;
 
 var parseHtml = function(html) {
     return html.replace(/<(style|script|iframe)[^>]*?>[\s\S]+?<\/\1\s*>/gi,'').replace(/<[^>]+?>/g,' ').replace(/\s+/g,' ').replace(/ /g,' ').replace(/>/g,' ');
@@ -11,20 +14,20 @@ var parseHtml = function(html) {
 var parseToCommonFormat = function(data) {
     var result = {};
     result.api_type = 'normal';
-    result.source = 'zhihuhot';
+    result.source = 'zhihuzhuanlan';
     result.data = [];
     for (var i in data) {
         var item = data[i];
         var content = {
-            id: result.source + '_' + item.id,
+            id: result.source + '_' + item.slug,
             title: item.title,
-            display_content: item.share_url,
-            read_content: parseHtml(item.body),
+            display_content: URL_ZHUANLAN_PREFIX + item.url,
+            read_content: parseHtml(item.content),
             type: 'multi',
-            image: item.image,
-            thumbnail: item.thumbnail,
-            share_url: item.share_url,
-            image_source: item.image_source
+            image: item.titleImage,
+            thumbnail: item.titleImage,
+            share_url: URL_ZHUANLAN_PREFIX + item.url,
+            image_source: item.title
         };
         result.data.push(content);
     }
@@ -40,11 +43,9 @@ var getBody = function (url, resolve) {
 
 var handler = function (req, response, next) {
     var page = req.query.page || 1;
-    if (page > 1) {
-        response.json(parseToCommonFormat([]));
-        return;
-    }
-    var url = URL;
+    var limit = PAGE_SIZE;
+    var offset = (page - 1) * PAGE_SIZE;
+    var url = URL + '?limit=' + limit + '&offset=' + offset;
     request({
         method: 'GET',
         url: url,
@@ -57,20 +58,10 @@ var handler = function (req, response, next) {
             response.send('Request failed with response code ' + res.statusCode);
         } else {
             var data = JSON.parse(body);
-            var promises = [];
-            data.recent.forEach(function (t) {
-               promises.push(new Promise(function (resolve) {
-                   var url = t.url;
-                   getBody(url, resolve);
-               }));
-            });
-            Promise.all(promises).then(function (results) {
-               response.json(parseToCommonFormat(results));
-            }, function (err) {
-               response.send('err ' + err);
-            })
+            var result = parseToCommonFormat(data);
+            response.json(result);
         }
-    })
+    });
 };
 
 module.exports = handler;
