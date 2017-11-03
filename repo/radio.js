@@ -14,6 +14,12 @@ var handler = function (req, res, next) {
         sub_title: '热门精选',
         album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-3/93102250.jpg',
         code: 'zhihu'
+    }, {
+        name: '知乎专栏',
+        description: '有验证的投资',
+        sub_title: '科学投资',
+        album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-3/59320853.jpg',
+        code: 'scientific_invest'
     }];
     var result = {
         data: list,
