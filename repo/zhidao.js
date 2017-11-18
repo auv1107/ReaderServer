@@ -29,7 +29,6 @@ var parseToCommonFormat = function(data) {
 var handler = function (req, response, next) {
     var page = req.query.page || 1;
     var url = URL + page;
-    console.log("11");
     request({
         method: 'GET',
         url: url,
@@ -39,15 +38,11 @@ var handler = function (req, response, next) {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
         }
     }, function (err, res, body) {
-        console.log("11");
         if (err) {
-            console.log("33");
             response.send('Request failed with response code ' + res.statusCode);
         } else {
-            console.log("44");
             var data = JSON.parse(body);
             var result = parseToCommonFormat(data);
-            console.log("55");
             response.json(result);
         }
     })
