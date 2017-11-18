@@ -20,6 +20,12 @@ var handler = function (req, res, next) {
         sub_title: '科学投资',
         album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-3/59320853.jpg',
         code: 'scientific_invest'
+    }, {
+        name: '百度知道',
+        description: '总有一个人知道你问题的答案',
+        sub_title: '神讨论',
+        album_url: 'http://img-pool2.cdn1.1tu.com/thumbs/3474805/vector/6082/60822917/api_thumb_450.jpg',
+        code: 'zhidao'
     }];
     var result = {
         data: list,
