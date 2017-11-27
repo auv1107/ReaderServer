@@ -26,6 +26,12 @@ var handler = function (req, res, next) {
         sub_title: '神讨论',
         album_url: 'http://img-pool2.cdn1.1tu.com/thumbs/3474805/vector/6082/60822917/api_thumb_450.jpg',
         code: 'zhidao'
+    }, {
+        name: '糗事百科',
+        description: '最新最糗的糗事，实时为你献上！',
+        sub_title: '最新糗事',
+        album_url: 'https://android-artworks.25pp.com/fs08/2017/10/12/11/110_67909199d7f066a11c8c11fbe0be1f85_con.png',
+        code: 'zhidao'
     }];
     var result = {
         data: list,

@@ -1,7 +1,7 @@
 'use strict';
 var request = require('request');
 
-const URL = "https://www.qiushibaike.com/?page=";
+const URL = "https://www.qiushibaike.com/hot/?page=";
 
 var parseToCommonFormat = function(data) {
     var result = {};
