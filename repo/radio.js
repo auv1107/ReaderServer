@@ -32,6 +32,12 @@ var handler = function (req, res, next) {
         sub_title: '最新糗事',
         album_url: 'https://android-artworks.25pp.com/fs08/2017/10/12/11/110_67909199d7f066a11c8c11fbe0be1f85_con.png',
         code: 'qiubainew'
+    }, {
+        name: '知乎日报',
+        description: '每天 3 次，每次 7 分钟',
+        sub_title: '每日日报',
+        album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-27/4089840.jpg',
+        code: 'zhihudaily'
     }];
     var result = {
         data: list,
