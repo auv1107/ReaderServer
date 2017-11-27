@@ -1,11 +1,34 @@
 'use strict';
 var request = require('request');
-const parse5 = require('parse5');
 
-const URL = "https://news-at.zhihu.com/api/3/news/hot";
+const BEFORE_URL = "https://news-at.zhihu.com/api/4/news/before";
+const DETAIL_URL = "https://news-at.zhihu.com/api/4/news";
 
 var parseHtml = function(html) {
     return html.replace(/<(style|script|iframe)[^>]*?>[\s\S]+?<\/\1\s*>/gi,'').replace(/<[^>]+?>/g,' ').replace(/\s+/g,' ').replace(/ /g,' ').replace(/>/g,' ');
+};
+
+var zFill = function (num) {
+    var str = "0" + num;
+    return str.substring(str.length - 2, str.length);
+};
+
+var getDateByPage = function (page) {
+    const dayMillis = 24 * 60 * 60 * 1000;
+    var currentTime = new Date().getTime();
+    var beforeTime = currentTime + dayMillis - (page - 1) * dayMillis;
+    var pageDate = new Date(beforeTime);
+    var date = pageDate.getFullYear() + "" + zFill(pageDate.getMonth() + 1) + zFill(pageDate.getDate());
+    return date;
+};
+
+var getUrl = function (page) {
+    var before = getDateByPage(page);
+    return BEFORE_URL + "/" + before;
+};
+
+var getDetailUrl = function (id) {
+    return DETAIL_URL + "/" + id;
 };
 
 var parseToCommonFormat = function(data) {
@@ -40,11 +63,8 @@ var getBody = function (url, resolve) {
 
 var handler = function (req, response, next) {
     var page = req.query.page || 1;
-    if (page > 1) {
-        response.json(parseToCommonFormat([]));
-        return;
-    }
-    var url = URL;
+    var url = getUrl(page);
+    console.log("page-url " + page + "," + url);
     request({
         method: 'GET',
         url: url,
@@ -58,9 +78,10 @@ var handler = function (req, response, next) {
         } else {
             var data = JSON.parse(body);
             var promises = [];
-            data.recent.forEach(function (t) {
+            data.stories.forEach(function (t) {
                promises.push(new Promise(function (resolve) {
-                   var url = t.url;
+                   var url = getDetailUrl(t.id);
+                   console.log("id-url " + t.id + "," + url);
                    getBody(url, resolve);
                }));
             });

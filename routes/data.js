@@ -7,6 +7,7 @@ router.get('/zhihu', require('../repo/zhihu'));
 router.get('/scientific_invest', require('../repo/scientific_invest'));
 router.get('/zhidao', require('../repo/zhidao'));
 router.get('/qiubainew', require('../repo/qiubainew'));
+router.get('/zhihudaily', require('../repo/zhihudaily'));
 
 router.get('/radio', require('../repo/radio'));
 
