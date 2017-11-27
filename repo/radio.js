@@ -7,7 +7,7 @@ var handler = function (req, res, next) {
         description: '超搞笑的原创糗事笑话分享社区',
         sub_title: '热门排行',
         album_url: 'https://android-artworks.25pp.com/fs08/2017/10/12/11/110_67909199d7f066a11c8c11fbe0be1f85_con.png',
-        code: 'qiubai'
+        code: 'qiubaihot'
     }, {
         name: '知乎日报',
         description: '每天 3 次，每次 7 分钟',
@@ -31,7 +31,7 @@ var handler = function (req, res, next) {
         description: '最新最糗的糗事，实时为你献上！',
         sub_title: '最新糗事',
         album_url: 'https://android-artworks.25pp.com/fs08/2017/10/12/11/110_67909199d7f066a11c8c11fbe0be1f85_con.png',
-        code: 'zhidao'
+        code: 'qiubainew'
     }];
     var result = {
         data: list,
