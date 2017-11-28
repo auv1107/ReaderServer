@@ -38,6 +38,12 @@ var handler = function (req, res, next) {
         sub_title: '每日日报',
         album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-27/4089840.jpg',
         code: 'zhihudaily'
+    }, {
+        name: '哔哩哔哩弹幕网',
+        description: 'bilibili，又名哔哩哔哩，是基于视频分享的互联网社区。(๑•̀ㅂ•́)و✧',
+        sub_title: '官方微博',
+        album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-28/85114292.jpg',
+        code: 'weibobilibili'
     }];
     var result = {
         data: list,
