@@ -44,12 +44,18 @@ var handler = function (req, res, next) {
         sub_title: '官方微博',
         album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-28/85114292.jpg',
         code: 'weibobilibili'
+    }, {
+        name: '36氪',
+        description: '让一部分人先看到未来',
+        sub_title: '最新文章',
+        album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-11-28/81908035.jpg',
+        code: '36krnew'
     }];
     var result = {
         data: list,
         api_type: 'radios',
         count: list.length
-    }
+    };
     res.json(result);
 };
 
