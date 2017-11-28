@@ -19,7 +19,7 @@ var parse36krUnicode = function (content) {
 
 var parseToCommonFormat = function(data) {
     var result = {};
-    result.api_type = 'normal';
+    result.api_type = 'webview';
     result.source = '36kr';
     result.data = [];
     for (var i in data) {

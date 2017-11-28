@@ -9,7 +9,7 @@ var parseHtml = function(html) {
 
 var parseToCommonFormat = function(data) {
     var result = {};
-    result.api_type = 'normal';
+    result.api_type = 'webview';
     result.source = 'weibo';
     result.data = [];
     for (var i in data.cards) {
