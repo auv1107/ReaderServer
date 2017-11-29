@@ -4,6 +4,7 @@ var request = require('request');
 const URL = "http://www.zhihu.com/api/v4/questions/27165092/answers";
 const URL_SUFFIX = "&include=data%5B%2A%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Ccreated_time%2Cupdated_time%2Creview_info%2Cquestion%2Cexcerpt%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees&data%5B%2A%5D.author.follower_count%2Cbadge%5B%3F%28type=best_answerer%29%5D.topics&data%5B%2A%5D.mark_infos%5B%2A%5D.url=&sort_by=default";
 const URL_ZHUANLAN_PREFIX = "https://www.zhihu.com";
+const URL_ANSWER_SJJS = "https://www.zhihu.com/question/27165092";
 const PAGE_SIZE = 20;
 
 
@@ -23,13 +24,13 @@ var parseToCommonFormat = function(data) {
         var item = data[i];
         var content = {
             id: result.source + '_' + item.id,
-            title: item.question.title,
-            display_content: item.url,
+            title: parseHtml(item.question.title),
+            display_content: URL_ANSWER_SJJS,
             read_content: parseHtml(parseu(item.content)),
             type: 'multi',
             image: item.author.avatar_url_template,
             thumbnail: item.titleImage,
-            share_url: item.url,
+            share_url: URL_ANSWER_SJJS,
             image_source: item.author.avatar_url
         };
         result.data.push(content);
