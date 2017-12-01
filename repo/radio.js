@@ -33,6 +33,12 @@ var handler = function (req, res, next) {
         album_url: 'https://android-artworks.25pp.com/fs08/2017/10/12/11/110_67909199d7f066a11c8c11fbe0be1f85_con.png',
         code: 'qiubainew'
     }, {
+        name: '内涵段子',
+        description: '网络热门段子发源地，与千万用户一起创造神评论！',
+        sub_title: '最新段子',
+        album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-12-1/80648084.jpg',
+        code: 'neihanshequ'
+    }, {
         name: '知乎日报',
         description: '每天 3 次，每次 7 分钟',
         sub_title: '每日日报',
