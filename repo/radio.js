@@ -33,7 +33,7 @@ var handler = function (req, res, next) {
         album_url: 'http://img-pool2.cdn1.1tu.com/thumbs/3474805/vector/6082/60822917/api_thumb_450.jpg',
         code: 'zhihu_answers',
         hot: 10,
-        online: true
+        online: false
     }, {
         name: '糗事百科',
         description: '最新最糗的糗事，实时为你献上！',
