@@ -64,7 +64,6 @@ var getBody = function (url, resolve) {
 var handler = function (req, response, next) {
     var page = req.query.page || 1;
     var url = getUrl(page);
-    console.log("page-url " + page + "," + url);
     request({
         method: 'GET',
         url: url,
@@ -81,7 +80,6 @@ var handler = function (req, response, next) {
             data.stories.forEach(function (t) {
                promises.push(new Promise(function (resolve) {
                    var url = getDetailUrl(t.id);
-                   console.log("id-url " + t.id + "," + url);
                    getBody(url, resolve);
                }));
             });
