@@ -24,7 +24,8 @@ var parseToCommonFormat = function(data) {
             image: item.image,
             thumbnail: item.thumbnail,
             share_url: item.share_url,
-            image_source: item.image_source
+            image_source: item.image_source,
+            script: "javascript:(function(){document.getElementsByClassName(\"header-for-mobile\")[0].style.display=\"none\"}).call()"
         };
         result.data.push(content);
     }
