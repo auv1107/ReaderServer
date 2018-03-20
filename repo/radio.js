@@ -149,7 +149,7 @@ var verifyList = [{
     online: true
 }];
 
-const onlineVersion = 0;
+const onlineVersion = 1;
 
 var handler = function (req, res, next) {
     var queryVersion = req.query.versionCode || 9999;
