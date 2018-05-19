@@ -48,7 +48,7 @@ var releaseList = [{
     album_url: 'http://ou8u8dsau.bkt.clouddn.com/17-12-1/80648084.jpg',
     code: 'neihanshequ',
     hot: 1079,
-    online: true
+    online: false
 }, {
     name: '知乎日报',
     description: '每天 3 次，每次 7 分钟',
@@ -149,7 +149,7 @@ var verifyList = [{
     online: true
 }];
 
-const onlineVersion = 1;
+const onlineVersion = 2;
 
 var handler = function (req, res, next) {
     var queryVersion = req.query.versionCode || 9999;
